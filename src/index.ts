@@ -1,4 +1,4 @@
-import { Canister, query, text, update, Void, float64 } from 'azle'; 
+import { Canister, query, text, update, Void, float64 } from 'azle';
 
 // Global state variables
 interface MachineState {
@@ -30,8 +30,8 @@ export default Canister({
         return state.currentOrder.map((item) => `${item.name} x ${item.quantity}`).join('\n');
     }),
 
-    getTotalPayment: query([], text, () => {
-        return state.totalPayment.toString();
+    getTotalPayment: query([], float64, () => {
+        return state.totalPayment;
     }),
 
     getOrderHistory: query([], text, () => {
@@ -63,11 +63,10 @@ export default Canister({
         }
     }),
 
-    processPayment: update([], text, () => {
+    processPayment: update([], Void, () => {
         // ... actual payment processing (replace with integration to payment gateway)
         state.orderHistory.push({ items: state.currentOrder.map((i) => i.name), total: state.totalPayment });
         state.currentOrder = [];
         state.totalPayment = 0;
-        return 'Payment successful!';
     }),
 });
