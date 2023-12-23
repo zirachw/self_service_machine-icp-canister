@@ -1,0 +1,13 @@
+{
+    "canisters": {
+        "self_service_machine": {
+            "type": "custom",
+            "main": "src/index.ts",
+            "candid": "src/index.did",
+            "build": "npx azle self_service_machine --verbose",
+            "wasm": ".azle/self_service_machine/self_service_machine.wasm",
+            "gzip": true
+        }
+    }
+}
+

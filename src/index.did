@@ -1,0 +1,9 @@
+service: () -> {
+    addItemToOrder: (text, float64) -> ();
+    getAvailableItems: () -> (text) query;
+    getCurrentOrder: () -> (text) query;
+    getOrderHistory: () -> (text) query;
+    getTotalPayment: () -> (text) query;
+    processPayment: () -> (text);
+    removeItemFromOrder: (text) -> ();
+}
